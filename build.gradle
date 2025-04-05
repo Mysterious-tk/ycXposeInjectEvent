@@ -1,0 +1,56 @@
+// Add these at the top
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.4.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 34
+    
+    namespace 'com.example.injectevent' // Add this line
+    
+    defaultConfig {
+        applicationId "com.example.injectevent"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
+    implementation 'androidx.core:core:1.12.0'  // 补充基础输入事件依赖
+    implementation 'androidx.appcompat:appcompat:1.6.1' // 添加基础Android库
+    compileOnly files('app\\libs\\api-82.jar')
+    compileOnly files('app\\libs\\api-82-sources.jar')
+    // 更新为jcenter上可用的最新版本
+
+
+}
+
+
+
+
